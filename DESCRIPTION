@@ -1,0 +1,11 @@
+Package: RDataScience
+Title: Miscellaneous tools for data science
+Version: 0.1
+Authors@R: person("Andreas", "Nearchou", email = "andreasnearchou9@gmail.com",
+                  role = c("aut", "cre"))
+Description: Miscellaneous tools for data science
+Depends: R (>= 3.1.0)
+License: MIT
+  LazyData: true
+Imports:
+  data.table
