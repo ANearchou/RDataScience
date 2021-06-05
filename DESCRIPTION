@@ -1,11 +1,12 @@
 Package: RDataScience
+Type: Package
 Title: Miscellaneous tools for data science
 Version: 0.1
-Authors@R: person("Andreas", "Nearchou", email = "andreasnearchou9@gmail.com",
-                  role = c("aut", "cre"))
-Description: Miscellaneous tools for data science
-Depends: R (>= 3.1.0)
-License: MIT
-  LazyData: true
-Imports:
+Date: 2021-06-05
+Author: Andreas Nearchou
+Maintainer: Andreas Nearchou <dev.nearchou.a@gmail.com>
+Description: Miscellaneous tools for data science.
+License: GPL (>= 2)
+Imports: Rcpp (>= 1.0.6),
   data.table
+LinkingTo: Rcpp
