@@ -6,7 +6,9 @@ Date: 2021-06-05
 Author: Andreas Nearchou
 Maintainer: Andreas Nearchou <dev.nearchou.a@gmail.com>
 Description: Miscellaneous tools for data science.
-License: GPL (>= 2)
+License: MIT + file LICENSE
 Imports: Rcpp (>= 1.0.6),
-  data.table
+  data.table,
+  feather
 LinkingTo: Rcpp
+RoxygenNote: 7.1.1

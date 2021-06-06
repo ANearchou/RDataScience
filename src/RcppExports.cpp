@@ -29,10 +29,23 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// weighted_moving_avg
+NumericVector weighted_moving_avg(DataFrame dt, int n);
+RcppExport SEXP _RDataScience_weighted_moving_avg(SEXP dtSEXP, SEXP nSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< DataFrame >::type dt(dtSEXP);
+    Rcpp::traits::input_parameter< int >::type n(nSEXP);
+    rcpp_result_gen = Rcpp::wrap(weighted_moving_avg(dt, n));
+    return rcpp_result_gen;
+END_RCPP
+}
 
 static const R_CallMethodDef CallEntries[] = {
     {"_RDataScience_sma", (DL_FUNC) &_RDataScience_sma, 2},
     {"_RDataScience_simple_moving_avg", (DL_FUNC) &_RDataScience_simple_moving_avg, 2},
+    {"_RDataScience_weighted_moving_avg", (DL_FUNC) &_RDataScience_weighted_moving_avg, 2},
     {NULL, NULL, 0}
 };
 

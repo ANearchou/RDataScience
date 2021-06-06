@@ -9,3 +9,7 @@ simple_moving_avg <- function(dt, n) {
     .Call(`_RDataScience_simple_moving_avg`, dt, n)
 }
 
+weighted_moving_avg <- function(dt, n) {
+    .Call(`_RDataScience_weighted_moving_avg`, dt, n)
+}
+
