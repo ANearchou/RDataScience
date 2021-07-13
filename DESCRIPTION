@@ -9,6 +9,8 @@ Description: Miscellaneous tools for data science.
 License: MIT + file LICENSE
 Imports: Rcpp (>= 1.0.6),
   data.table,
-  feather
+  feather,
+  lubridate,
+  fasttime
 LinkingTo: Rcpp
 RoxygenNote: 7.1.1
