@@ -50,3 +50,13 @@ btc
 # 2860: 2013-05-01 23:59:59   139.890   107.7200   139.000   116.99            0   1298954594     0.00     0.00
 # 2861: 2013-04-30 23:59:59   146.930   134.0500   144.000   139.00            0   1542813125     0.00     0.00
 # 2862: 2013-04-29 23:59:59   147.488   134.0000   134.444   144.54            0   1603768865     0.00     0.00
+
+
+p <- plot_ly(
+    btc ,
+    x = ~Date, type = "candlestick", open = ~Open,
+    close = ~Close, high = ~High, low = ~Low
+)
+p <- add_lines(p, x = ~Date, y = ~sma_20, inherit = F)
+p <- add_lines(p, x = ~Date, y = ~sma_100, inherit = F)
+p <- layout(p, showlegend = FALSE, title = "BTC/USD", yaxis = "")

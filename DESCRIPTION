@@ -11,6 +11,7 @@ Imports: Rcpp (>= 1.0.6),
   data.table,
   feather,
   lubridate,
-  fasttime
+  fasttime,
+  parallel
 LinkingTo: Rcpp
 RoxygenNote: 7.1.1

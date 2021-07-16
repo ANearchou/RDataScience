@@ -2,14 +2,14 @@
 # Generator token: 10BE3573-1514-4C36-9D1C-5A225CD40393
 
 sma <- function(x, n) {
-    .Call(`_RDataScience_sma`, x, n)
+    .Call('_RDataScience_sma', PACKAGE = 'RDataScience', x, n)
 }
 
 simple_moving_avg <- function(dt, n) {
-    .Call(`_RDataScience_simple_moving_avg`, dt, n)
+    .Call('_RDataScience_simple_moving_avg', PACKAGE = 'RDataScience', dt, n)
 }
 
 weighted_moving_avg <- function(dt, n) {
-    .Call(`_RDataScience_weighted_moving_avg`, dt, n)
+    .Call('_RDataScience_weighted_moving_avg', PACKAGE = 'RDataScience', dt, n)
 }
 
