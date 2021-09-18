@@ -20,12 +20,22 @@ movies[,description := NULL]
 
 cast_attrs <- movies[,.(cast = unlist(strsplit(cast, ", "))), by = .(show_id)]
 cast_attrs[,cast := paste0(cast, "_cast")]
+cast_attrs[,rank := 1:.N, by = .(show_id)]
+# cast_attrs[,x := ifelse(rank == 1, 5, ifelse(rank == 2, 3, 1))]  If we want to give more weights to some attributes
+cast_attrs[,x := 1]
+cast_attrs[,rank := NULL]
 
 genres_attrs <- movies[,.(genre = unlist(strsplit(listed_in, ", "))), by = .(show_id)]
 genres_attrs[,genre := paste0(genre, "_genre")]
+genres_attrs [,rank := 1:.N, by = .(show_id)]
+# genres_attrs [,x := ifelse(rank == 1, 5, 1)]
+genres_attrs [,x := 1]
+genres_attrs[,rank := NULL]
 
 director_attrs <- movies[,.(director = unlist(strsplit(director, ", "))), by = .(show_id)]
 director_attrs[,director := paste0(director, "_director")]
+# director_attrs[,x := 5]
+director_attrs[,x := 1]
 
 cast_id <- unique(cast_attrs[,.(cast)])
 setnames(cast_id, "cast", 'attr')
@@ -51,7 +61,7 @@ movies_id <- unique(movies_coded[,.(show_id)])
 movies_id[,movie_id := 1:.N]
 movies_coded <- movies_id[movies_coded, on = .(show_id)]
 
-movies_coded <- movies_coded[,.(movie_id, attr_id)][,x := 1]
+movies_coded <- movies_coded[,.(movie_id, attr_id, x)]
 movie_contents <- sparseMatrix(
   i = movies_coded$movie_id,
   j = movies_coded$attr_id,
@@ -67,3 +77,9 @@ movies_similarities <- data.table(target_movie = movies_similarities@i+1,
                                   CosSim = movies_similarities@x)
 movies_similarities <- movies_similarities[target_movie != cross_movie]
 movies_similarities <- movies_similarities[order(target_movie, -CosSim)]
+
+
+movies_similarities <- movies_id[,.(cross_show = show_id , cross_movie = movie_id)][movies_similarities, on = .(cross_movie)]
+movies_similarities <- movies_id[,.(target_show = show_id , target_movie = movie_id)][movies_similarities, on = .(target_movie)]
+movies_similarities <- movies[,.(cross_show = show_id, cross_title = title)][movies_similarities, on = .(cross_show)]
+movies_similarities <- movies[,.(target_show = show_id, target_title = title)][movies_similarities, on = .(target_show)]

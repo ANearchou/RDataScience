@@ -8,6 +8,7 @@ Maintainer: Andreas Nearchou <dev.nearchou.a@gmail.com>
 Description: Miscellaneous tools for data science.
 License: MIT + file LICENSE
 Imports: Rcpp (>= 1.0.6),
+  RcppArmadillo,
   data.table,
   feather,
   lubridate,

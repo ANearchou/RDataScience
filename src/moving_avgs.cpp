@@ -2,6 +2,13 @@
 using namespace Rcpp;
 
 
+//' Vector simple moving average
+//'
+//'
+//' Returns a vector of the simple moving average of a vector
+//' 
+//' @param x Numeric vector
+//' @param n lenght of the average 
 // [[Rcpp::export]]
 NumericVector sma(NumericVector x, int n){
 
@@ -20,6 +27,13 @@ NumericVector sma(NumericVector x, int n){
 
 
 
+//' Simple moving average
+//'
+//'
+//' Given a data table/frame with a column 'x', returns the simple moving average of that column
+//' 
+//' @param dt data table/frame
+//' @param n lenght of the average 
 // [[Rcpp::export]]
 NumericVector simple_moving_avg(DataFrame dt, int n){
     
@@ -38,6 +52,13 @@ NumericVector simple_moving_avg(DataFrame dt, int n){
 }
 
 
+//' Weighted moving average
+//'
+//'
+//' Given a data table/frame with a column 'x', returns the weighted moving average of that column
+//' 
+//' @param dt data table/frame
+//' @param n lenght of the average 
 // [[Rcpp::export]]
 NumericVector weighted_moving_avg(DataFrame dt, int n){
     
