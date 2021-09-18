@@ -11,7 +11,7 @@
 
 library(data.table)
 
-btc <- fread("C:/Users/user/Desktop/Andreas/R/kaggle/crypto_daily/coin_Bitcoin.csv")
+btc <- fread(paste0(examples_path, "/crypto_daily/coin_Bitcoin.csv"))
 
 btc[,setdiff(names(btc), names(btc)[1:3]), with = FALSE]
 

@@ -63,11 +63,11 @@ ui <- dashboardPage(
 server <- function(input, output, session) {
   options(shiny.maxRequestSize=1000*1024^2)
   
-  outpath <- "C:/Users/user/Desktop/Andreas/R/RDataScience/kaggle/Brazil_ECommerce/Output"
+  outpath <- paste0(examples_path,"/Brazil_ECommerce/Output")
 
   output$myImage <- renderImage({
     list(
-      src = "C:/Users/user/Desktop/Andreas/R/RDataScience/kaggle/Brazil_ECommerce/ShinyApp/www/shutterstock_1772268194.jpg",
+      src = paste0(examples_path, "/Brazil_ECommerce/ShinyApp/www/shutterstock_1772268194.jpg"),
       width = 1000,
       height = 600
     )

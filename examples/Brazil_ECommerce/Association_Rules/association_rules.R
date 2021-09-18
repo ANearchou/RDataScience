@@ -4,7 +4,7 @@
 
 library(data.table)
 
-path <- "C:/Users/user/Desktop/Andreas/R/RDataScience/kaggle/Brazil_ECommerce"
+path <- paste0(examples_path, "/Brazil_ECommerce")
 
 order_payments <- fread(paste0(path, "/Input/olist_order_payments_dataset.csv"))
 orders <- fread(paste0(path, "/Input/olist_orders_dataset.csv"))
@@ -66,7 +66,7 @@ combination_baskets[,wtd_lift := Lift * (0.25*target_baskets + 0.25*cross_basket
 
 fwrite(
   combination_baskets,
-  "C:/Users/user/Desktop/Andreas/R/RDataScience/kaggle/Brazil_ECommerce/Association_Rules/Output/Association_Rules.csv"
+  paste0(examples_path, "/Brazil_ECommerce/Association_Rules/Output/Association_Rules.csv")
 )
 ###############################################################################################
 ###############################################################################################
