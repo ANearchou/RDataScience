@@ -4,7 +4,7 @@
 \alias{read7zfeather}
 \title{Use feather::read_feather to read a zipped file}
 \usage{
-read7zfeather(file, seven_zip = "C:/Users/user/scoop/apps/7zip/current/7z.exe")
+read7zfeather(file, seven_zip = sevenzip_path)
 }
 \arguments{
 \item{file}{file to read}

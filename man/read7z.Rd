@@ -4,7 +4,7 @@
 \alias{read7z}
 \title{Use data.table::fread to read a zipped file}
 \usage{
-read7z(file, seven_zip = "C:/Users/user/scoop/apps/7zip/current/7z.exe")
+read7z(file, seven_zip = sevenzip_path)
 }
 \arguments{
 \item{file}{file to read}

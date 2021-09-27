@@ -4,12 +4,7 @@
 \alias{write7z}
 \title{Use data.table::fwrite to write and zipped a file}
 \usage{
-write7z(
-  data,
-  filename,
-  seven_zip = "C:/Users/user/scoop/apps/7zip/current/7z.exe",
-  sep = ","
-)
+write7z(data, filename, seven_zip = sevenzip_path, sep = ",")
 }
 \arguments{
 \item{data}{file to export}

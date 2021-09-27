@@ -13,6 +13,8 @@ Imports: Rcpp (>= 1.0.6),
   feather,
   lubridate,
   fasttime,
-  parallel
+  parallel,
+  jsonlite,
+  curl
 LinkingTo: Rcpp, RcppArmadillo
 RoxygenNote: 7.1.2

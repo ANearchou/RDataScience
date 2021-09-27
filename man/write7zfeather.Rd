@@ -4,11 +4,7 @@
 \alias{write7zfeather}
 \title{Use feather::write_feather to write and zipped a file}
 \usage{
-write7zfeather(
-  data,
-  filename,
-  seven_zip = "C:/Users/user/scoop/apps/7zip/current/7z.exe"
-)
+write7zfeather(data, filename, seven_zip = sevenzip_path)
 }
 \arguments{
 \item{data}{file to export}

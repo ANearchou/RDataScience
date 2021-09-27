@@ -7,7 +7,9 @@
 #' @param sep column seperator
 #' @family read_write
 #' @export
-write7z <- function(data, filename, seven_zip = sevenzip_ath, sep = ","){
+write7z <- function(data, filename, seven_zip = sevenzip_path, sep = ","){
+
+    sevenzip_path <- NULL
 
     file <- paste0(getwd(), "/", gsub(".7z", 
         "", basename(filename), ignore.case = T))
@@ -29,7 +31,10 @@ write7z <- function(data, filename, seven_zip = sevenzip_ath, sep = ","){
 #' @param seven_zip 7z installation path
 #' @family read_write
 #' @export
-read7z <- function(file, seven_zip = sevenzip_ath){
+read7z <- function(file, seven_zip = sevenzip_path){
+
+    sevenzip_path <- NULL
+    
     txtfile <- paste0(getwd(), "/", gsub(".7z", 
         "", basename(file), ignore.case = T))
     cmd <- paste0(seven_zip, " x \"", file, "\" -aoa -o\"", 
@@ -49,7 +54,9 @@ read7z <- function(file, seven_zip = sevenzip_ath){
 #' @param seven_zip 7z installation path
 #' @family read_write
 #' @export
-write7zfeather <- function(data, filename, seven_zip = sevenzip_ath){
+write7zfeather <- function(data, filename, seven_zip = sevenzip_path){
+
+    sevenzip_path <- NULL
 
     file <- paste0(getwd(), "/", gsub(".7z", 
         "", basename(filename), ignore.case = T))
@@ -71,7 +78,10 @@ write7zfeather <- function(data, filename, seven_zip = sevenzip_ath){
 #' @param seven_zip 7z installation path
 #' @family read_write
 #' @export
-read7zfeather <- function(file, seven_zip = sevenzip_ath){
+read7zfeather <- function(file, seven_zip = sevenzip_path){
+    
+    sevenzip_path <- NULL
+
     featherfile <- paste0(getwd(), "/", gsub(".7z", 
         "", basename(file), ignore.case = T))
     cmd <- paste0(seven_zip, " x \"", file, "\" -aoa -o\"", 
