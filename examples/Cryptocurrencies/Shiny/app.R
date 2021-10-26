@@ -59,12 +59,41 @@ ui <- material_page(
     )
     
   ),
+  material_row(
+      material_column(
+          width = 10, offset = 2,
+          material_card(
+                tags$h5('Time Frame'),
+                material_radio_button(
+                    "chart_frame", "",
+                    choices = c("24H", "7d", "1m", "6m", "1Y", "ALL"),
+                    selected = "24H", with_gap = TRUE
+                ),
+                tagList(
+                    tags$head(
+                        tags$style(
+                            "#chart_frame {display:flex;}
+                            input[type=radio] {margin-right: 42px;}"
+                        )
+                    )
+                ),
+
+                tags$h5('Scale'),
+                material_switch("log_scale", 
+                        on_label = "Log",
+                        initial_value = FALSE,
+                        color = "teal lighten-1"),
+
+              highchartOutput("crypto_graph"),
+              depth = 3
+          )
+      )
+  )
   
-  highchartOutput("crypto_graph")
   
 )
 
-server <- function(input, output){
+server <- function(input, output, session){
   
     apikey <- fread(paste0(examples_path, "/Cryptocurrencies/Shiny/api_key.txt"))
     apikey <- apikey[,key]
@@ -161,12 +190,44 @@ server <- function(input, output){
   
 
   output$crypto_graph <- renderHighchart({
-    t <- hchart(coin_data()$minute[-c(1:560)], "line", hcaes(x = highcharter::datetime_to_timestamp(date), y = close))
-    t <- t %>%
-      hc_xAxis(type = 'datetime',
-               title = list(text = "Datetime")) %>%
-      hc_yAxis(title = list(text = "Price"))
+
+    req(input$chart_frame)
+
+    material_spinner_show(session, "crypto_graph")
+    Sys.sleep(time = 2)
+    material_spinner_hide(session, "crypto_graph")
+    if (input$chart_frame == "24H"){
+        dt <- coin_data()$minute[-c(1:560)]
+    } else if (input$chart_frame == "7d"){
+        dt <- coin_data()$hourly[-c(1:1832)]
+    } else if (input$chart_frame == "1m"){
+        dt <- coin_data()$hourly
+        dt <- dt[date >= dt$date[2001] + months(-1)]
+    } else if (input$chart_frame == "6m"){
+        dt <- coin_data()$daily
+        dt <- dt[date >= dt$date[2001] + months(-6)]
+    } else if (input$chart_frame == "1Y"){
+        dt <- coin_data()$daily
+        dt <- dt[date >= dt$date[2001] + months(-12)]
+    } else {
+        dt <- coin_data()$daily
+    }
     
+    
+
+    if (input$log_scale) {
+        t <- hchart(dt, "line", hcaes(x = highcharter::datetime_to_timestamp(date), y = log(close)))
+    } else {
+        t <- hchart(dt, "line", hcaes(x = highcharter::datetime_to_timestamp(date), y = close))
+    }
+
+    
+
+    t <- t %>%
+        hc_xAxis(type = 'datetime',
+            title = list(text = "Datetime")) %>%
+        hc_yAxis(title = list(text = "Price"))
+
   })
   
   
