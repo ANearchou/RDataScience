@@ -6,3 +6,8 @@
 # data
 *.csv
 *.txt
+
+# shiny apps
+*.dcf
+*.woff
+*.woff2

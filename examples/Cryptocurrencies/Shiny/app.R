@@ -95,7 +95,7 @@ ui <- material_page(
 
 server <- function(input, output, session){
   
-    apikey <- fread(paste0(examples_path, "/Cryptocurrencies/Shiny/api_key.txt"))
+    apikey <- fread(paste0("api_key.txt"))
     apikey <- apikey[,key]
     
     h <- new_handle()
