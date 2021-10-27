@@ -147,6 +147,8 @@ server <- function(input, output, session){
   
   
   coin_data <- reactive({
+
+    invalidateLater(1000*60*5)
     
     req(input$selected_coin)
     coin <- input$selected_coin
