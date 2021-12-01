@@ -8,6 +8,7 @@ This repo can be used as an R package. I am also doing some fun data analysis us
 ## Shiny apps
 Deploed shiny applications so far:
 - https://uohcraena.shinyapps.io/shiny/
+- https://uohcraena.shinyapps.io/pictureCY/
 
 ----------
 Feel free to drop any suggestions, questions or even some coffee!
